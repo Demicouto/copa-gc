@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
+import model.Selecao;
 import service.Copa;
 import util.CargaInicial;
 
@@ -28,7 +29,11 @@ public class Main {
             switch (opcaoEscolhida) {
 
                 case 1:
-                    System.out.println("Função ainda não implementada");
+                    System.out.print("Digite o grupo (A ou B): ");
+                    char grupo = scanner.next().toUpperCase().charAt(0);
+
+                    copa.listarGrupo(grupo);
+
                     break;
                 case 2:
                     System.out.println("Função ainda não implementada");
@@ -37,7 +42,7 @@ public class Main {
                     System.out.println("Função ainda não implementada");
                     break;
                 case 4:
-                    System.out.println("Função ainda não implementada");
+                    copa.topArtilheiros();
                     break;
                 case 0:
                     System.out.println("Saindo da aplicação!");
