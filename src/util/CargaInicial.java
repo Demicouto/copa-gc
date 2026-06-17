@@ -31,6 +31,11 @@ public class CargaInicial {
         copa.registrarPartida(new Partida(ira ,estadosunidos, 7, 7));
         copa.registrarPartida(new Partida(espanha,caboverde, 0, 0));
         copa.registrarPartida(new Partida(costadomarfim, escocia, 1, 7));
+
+        //artilheiros
+        copa.adicionarArtilheiro("Pecsi");
+        copa.adicionarArtilheiro("oh Neymar neyterra");
+        copa.adicionarArtilheiro("CRSEVEN");
     }
 
 }
