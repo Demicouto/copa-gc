@@ -17,14 +17,20 @@ public class CargaInicial {
         Selecao costadomarfim = new Selecao("Costa do Marfim",'B', "CDM");
         Selecao tunisia = new Selecao("Tunísia", 'B', "TUN");
 
-        copa.adicionarSelecoes(brasil);
-        copa.adicionarSelecoes(escocia);
-        copa.adicionarSelecoes(espanha);
-        copa.adicionarSelecoes(caboverde);
-        copa.adicionarSelecoes(ira);
-        copa.adicionarSelecoes(estadosunidos);
-        copa.adicionarSelecoes(costadomarfim);
-        copa.adicionarSelecoes(tunisia);
+        copa.adicionarSelecao(brasil);
+        copa.adicionarSelecao(escocia);
+        copa.adicionarSelecao(espanha);
+        copa.adicionarSelecao(caboverde);
+        copa.adicionarSelecao(ira);
+        copa.adicionarSelecao(estadosunidos);
+        copa.adicionarSelecao(costadomarfim);
+        copa.adicionarSelecao(tunisia);
+
+        //Partidas
+        copa.registrarPartida(new Partida(brasil,tunisia, 2, 0));
+        copa.registrarPartida(new Partida(ira ,estadosunidos, 7, 7));
+        copa.registrarPartida(new Partida(espanha,caboverde, 0, 0));
+        copa.registrarPartida(new Partida(costadomarfim, escocia, 1, 7));
     }
 
 }
