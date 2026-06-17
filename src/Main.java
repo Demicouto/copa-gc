@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
+import model.Partida;
 import model.Selecao;
 import service.Copa;
 import util.CargaInicial;
@@ -36,10 +37,73 @@ public class Main {
 
                     break;
                 case 2:
-                    System.out.println("Função ainda não implementada");
+                    // Seleção Mandante
+                    System.out.print("Código FIFA mandante: ");
+                    String codigoFifaMandante = scanner.next().toUpperCase();
+
+                    System.out.print("Gols mandante: ");
+                    int golsMandante = scanner.nextInt();
+
+                    Selecao selecaoMandante = copa.getSelecao(codigoFifaMandante);
+
+                    // Seleção Visitante
+                    System.out.println("Código FIFA visitante: ");
+                    String codigoFifaVisitante = scanner.next().toUpperCase();
+
+                    System.out.print("Gols visitante: ");
+                    int golsVisitante = scanner.nextInt();
+
+                    Selecao selecaoVisitante = copa.getSelecao(codigoFifaVisitante);
+
+                    if(selecaoVisitante == null || selecaoMandante == null) {
+                        System.out.println("O Código Fifa de alguma das seleções está errada,");
+                        break;
+                    }
+
+                    Partida partida = new Partida(selecaoMandante, selecaoVisitante, golsMandante, golsVisitante);
+
+                    copa.registrarPartida(partida);
+                    System.out.println("Registrado com sucesso");
+
                     break;
                 case 3:
-                    System.out.println("Função ainda não implementada");
+                    System.out.print("Digite o grupo (A ou B): ");
+                    char g = scanner.next().toUpperCase().charAt(0);
+
+                    System.out.println("\n=== Classificação Grupo " + g + " ===");
+
+                    List<Selecao> selecoesFiltradas = copa.getSelecoes(g);
+                    if(selecoesFiltradas == null) {
+                        System.out.println("Erro ao filtrar seleções");
+                        break;
+                    }
+
+                    for (Selecao s : selecoesFiltradas) {
+
+                        int pontos = 0;
+
+                        for (Partida p : copa.getPartidas()) {
+
+                            // mandante
+                            if (p.getMandante().equals(s)) {
+                                if (p.getGolsA() > p.getGolsB())
+                                    pontos += 3;
+                                else if (p.getGolsA() == p.getGolsB())
+                                    pontos += 1;
+                            }
+
+                            // visitante
+                            if (p.getVisitante().equals(s)) {
+                                if (p.getGolsB() > p.getGolsA())
+                                    pontos += 3;
+                                else if (p.getGolsB() == p.getGolsA())
+                                    pontos += 1;
+                            }
+                        }
+
+                        System.out.println(s.getCodigoFIFA() + " - " + pontos + " pts");
+                    }
+
                     break;
                 case 4:
                     copa.topArtilheiros();

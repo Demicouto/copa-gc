@@ -66,4 +66,32 @@ public class Copa {
             System.out.println(selecao.getNome() + " (Grupo " + selecao.getGrupo() + ") - " + pontos + " pontos");
         }
     }
+
+    public List<Partida> getPartidas(){
+        return partidas;
+    }
+
+    public List<Selecao> getSelecoes() {
+        return selecoes;
+    }
+
+    public List<Selecao> getSelecoes(char grupo) {
+        List<Selecao> selecoesFiltradas = new ArrayList<Selecao>();
+
+        for(Selecao s : selecoes) {
+            if(s.getGrupo() == grupo) {
+                selecoesFiltradas.add(s);
+            }
+        }
+
+        return selecoesFiltradas;
+    }
+
+    public Selecao getSelecao(String codigoFIFA){
+        for(Selecao s : selecoes) {
+            if(s.getCodigoFIFA().equals(codigoFIFA)) { return s; }
+        }
+
+        return null;
+    }
 }
