@@ -43,4 +43,27 @@ public class Copa {
             System.out.println(artilheiro);
         }
     }
+
+    public void calcularClassificacao() {
+        System.out.println("=== Classificação da Copa ===");
+        
+        for (Selecao selecao : selecoes) {
+            int pontos = 0;
+            
+            for (Partida partida : partidas) {
+                // Checa se a seleção jogou como mandante
+                if (partida.getMandante().getCodigoFIFA().equals(selecao.getCodigoFIFA())) {
+                    if (partida.getGolsA() > partida.getGolsB()) pontos += 3;
+                    else if (partida.getGolsA() == partida.getGolsB()) pontos += 1;
+                } 
+                // Checa se a seleção jogou como visitante
+                else if (partida.getVisitante().getCodigoFIFA().equals(selecao.getCodigoFIFA())) {
+                    if (partida.getGolsB() > partida.getGolsA()) pontos += 3;
+                    else if (partida.getGolsB() == partida.getGolsA()) pontos += 1;
+                }
+            }
+            
+            System.out.println(selecao.getNome() + " (Grupo " + selecao.getGrupo() + ") - " + pontos + " pontos");
+        }
+    }
 }
