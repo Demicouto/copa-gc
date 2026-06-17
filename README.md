@@ -84,7 +84,7 @@ fix(main): corrige leitura do Scanner
 ```
 ---
 
-## ➜ Como Executar
+## ➜ Como Executar (versao A)
 
 **Pré-requisitos**
 - Java JDK 17+
